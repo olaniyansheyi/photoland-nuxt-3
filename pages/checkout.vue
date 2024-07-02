@@ -45,9 +45,14 @@ onMounted(() => {
 });
 
 onMounted(async () => {
-  stripe.value = await loadStripe(
-    useRuntimeConfig().public.stripePublishableKey
-  );
+  const stripePublishableKey = useRuntimeConfig().public.stripePublishableKey;
+
+  if (!stripePublishableKey) {
+    console.error("Stripe publishable key is not defined.");
+    return;
+  }
+
+  stripe.value = await loadStripe(stripePublishableKey);
 
   const { clientSecret: secret } = await $fetch("/api/stripe/paymentintent", {
     method: "POST",
