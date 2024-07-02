@@ -105,7 +105,6 @@ const pay = async () => {
         authStore.fullName.value = "";
         authStore.address.value = "";
         authStore.phoneNumber.value = "";
-        cartStore.handleClearCart();
       }
     } catch (error) {
       console.error("Failed to place the order");
@@ -113,7 +112,7 @@ const pay = async () => {
     }
 
     isProcessing.value = false;
-
+    cartStore.handleClearCart();
     router.push("/order");
     $toast.success("payment successfull: order successfully placed!");
   }

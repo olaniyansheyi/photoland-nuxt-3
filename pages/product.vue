@@ -3,18 +3,16 @@ import { useProductsStore } from "@/stores/product";
 import { useCartStore } from "~/stores/cart";
 
 import { useRouter } from "#app";
-import { onMounted } from "vue";
+import { onBeforeMount, onMounted } from "vue";
 
 const router = useRouter();
 
 const productsStore = useProductsStore();
 const cartStore = useCartStore();
 
-onMounted(() => {
-  if (!productsStore.currentSingleProduct) {
-    router.push("/");
-  }
-});
+if (!productsStore.currentSingleProduct) {
+  router.push("/");
+}
 </script>
 
 <template>
