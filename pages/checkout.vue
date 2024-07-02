@@ -10,6 +10,10 @@ definePageMeta({
   middleware: "auth",
 });
 
+import { useNuxtApp } from "#app";
+
+const { $toast } = useNuxtApp();
+
 const cartStore = useCartStore();
 const cartItems = cartStore.cart;
 const total = cartStore.totalProductsPrice;
@@ -108,9 +112,10 @@ const pay = async () => {
       isProcessing.value = false;
     }
 
-    console.log(orderStore.currentOrderId);
+    isProcessing.value = false;
 
     router.push("/order");
+    $toast.success("payment successfull: order successfully placed!");
   }
 };
 </script>
