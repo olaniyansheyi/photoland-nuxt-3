@@ -1,6 +1,9 @@
 export default {
   buildModules: ["@nuxtjs/fontawesome"],
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
+  build: {
+    transpile: ["vue-toastification"],
+  },
 
   fontawesome: {
     component: "fa",
