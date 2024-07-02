@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="flex items-center justify-center flex-col gap-y-5 bg-primary py-16 w-full text-white text-center"
+    class="flex items-center justify-center flex-col gap-y-5 bg-primary py-16 w-full text-white text-center px-4"
   >
     <span>
       <h1 class="font-bold text-2xl tracking-wide">

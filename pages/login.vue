@@ -61,7 +61,7 @@ async function handleLogin() {
           <input
             v-model="authStore.email"
             class="w-full text-primary py-2 mt-2 outline-none px-5 rounded-lg"
-            type="mail"
+            type="email"
           />
         </span>
         <span class="flex flex-col">
