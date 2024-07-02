@@ -1,6 +1,10 @@
 <script setup>
 import { useAuthStore } from "~/stores/auth.js";
 
+import { useNuxtApp } from "#app";
+
+const { $toast } = useNuxtApp();
+
 const authStore = useAuthStore();
 const props = defineProps({
   handleToggleMenu: {
@@ -14,13 +18,13 @@ async function handleLogout() {
     const { error } = await authStore.logout();
 
     if (error) {
-      console.error(`${error}`);
+      $toast.error(`${error}`);
     } else {
       props.handleToggleMenu();
-      console.success("you are successfully logged out!");
+      $toast.success("you are successfully logged out!");
     }
   } catch (error) {
-    console.error("Login failed:", error.message);
+    $toast.error(`"Login failed:", ${error.message}`);
   }
 }
 </script>

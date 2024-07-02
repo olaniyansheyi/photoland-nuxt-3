@@ -194,7 +194,7 @@ const pay = async () => {
           <form @submit.prevent="pay">
             <div
               id="card-element"
-              class="mb-4 bg-white text-primary border-none p-4 mt-10"
+              class="mb-4 bg-white text-primary border-none p-4 mt-10 font-bold"
             ></div>
             <p id="card-error" class="text-red-500"></p>
             <button

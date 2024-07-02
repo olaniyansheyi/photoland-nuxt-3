@@ -3,20 +3,22 @@ import { useAuthStore } from "~/stores/auth.js";
 
 const authStore = useAuthStore();
 
-const message = ref("");
+import { useNuxtApp } from "#app";
+
+const { $toast } = useNuxtApp();
 
 async function handleLogout() {
   try {
     const { error } = await authStore.logout();
 
     if (error) {
-      message.value = error;
+      $toast.error(`${error}`);
     } else {
       props.handleToggleMenu();
-      message.value = "you are successfully logged out!";
+      $toast.success("you are successfully logged out!");
     }
   } catch (error) {
-    console.error("Login failed:", error.message);
+    $toast.error(`"Login failed:", ${error.message}`);
   }
 }
 </script>

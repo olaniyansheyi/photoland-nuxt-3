@@ -3,7 +3,9 @@ import { useAuthStore } from "~/stores/auth.js";
 
 const authStore = useAuthStore();
 
-const message = ref("");
+import { useNuxtApp } from "#app";
+
+const { $toast } = useNuxtApp();
 
 async function handleSignUp() {
   try {
@@ -13,14 +15,16 @@ async function handleSignUp() {
       password: authStore.password,
     });
     if (response.error) {
-      message.value = response.error;
+      $toast.error(`${response.error}`);
     } else {
       navigateTo("/login");
-      message.value =
-        "refistration successfull, PLease make sure you verify your email before you log in!";
+
+      $toast.success(
+        "refistration successfull, PLease make sure you verify your email before you log in!"
+      );
     }
   } catch (error) {
-    console.error("Sign-up failed:", error.message);
+    $toast.error(`"Sign-up failed:", ${error.message}`);
   }
 
   authStore.fullName = "";

@@ -7,11 +7,9 @@ import { useNuxtApp } from "#app";
 
 const { $toast } = useNuxtApp();
 
-const message = ref("");
-
 async function handleLogin() {
   if (authStore.email === "" || authStore.password === "") {
-    $toast.error("All feild is required!");
+    $toast.error("All feild are required!");
     return;
   }
   try {
@@ -24,11 +22,10 @@ async function handleLogin() {
       $toast.error(`${Response.error}`);
     } else {
       navigateTo("/");
-      message.value = "you are successfully logged in!";
+      $toast.success("you are successfully logged in!");
     }
   } catch (error) {
-    console.error("Login failed:", error.message);
-    $toast.error(`${error.message}`);
+    $toast.error(`"Login failed:", ${error.message}`);
   }
 
   authStore.email = "";
