@@ -1,10 +1,6 @@
 import { defineStore } from "pinia";
 import { useNuxtApp } from "#app";
 
-import { useRouter } from "vue-router";
-
-const router = useRouter();
-
 export const useOrderStore = defineStore("order", {
   // Data
   state: () => ({
